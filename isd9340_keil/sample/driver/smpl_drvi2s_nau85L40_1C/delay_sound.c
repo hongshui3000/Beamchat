@@ -1,3 +1,7 @@
+/* File that delays sound by first a number of samples 
+and then a fractional delay using thiran coefficients to 
+adjust a line of fit*/
+
 #include "delay_sound.h"
 #include "math.h"
 #include "FixedBeamformer.h"
@@ -45,7 +49,7 @@ float delay_out(int mic, float in) {
 	if(d[mic].read_pointer < 0){
 		d[mic].read_pointer = d[mic].read_pointer + BUFFER_SIZE - 1;
 	}
-
+	/*apply fractional part of delay*/
 	x = d[mic].buffer[d[mic].read_pointer];
 	out =	  (d[mic].prev_in[0]                   )
 		+ (d[mic].prev_in[1]  * d[mic].thiran_coeff_1)
@@ -62,9 +66,10 @@ float delay_out(int mic, float in) {
 	d[mic].prev_out[1] = d[mic].prev_out[2];
 	d[mic].prev_out[2] = out;
 
-		
+	/*increment write pointer*/	
 	d[mic].write_pointer = d[mic].write_pointer + 1;
-
+	
+	/*loop if necessary*/
 	if(d[mic].write_pointer > BUFFER_SIZE - 1) {
 		d[mic].write_pointer = 0;
 	}
