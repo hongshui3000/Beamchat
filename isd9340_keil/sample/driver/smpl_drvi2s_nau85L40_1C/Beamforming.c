@@ -18,10 +18,10 @@
 float freq = 16000; //frequency of data input
 float speed_of_sound = 340.3; //speed of sound at sea level
 int filterLength = 11; //Numer of FIR filter taps for fractional delay(shouled be odd)
-float angle = 0;
+float angle = 0; //user inputed angle
 float volume = .75;
-bool turn_off = false;
-char mode = 'M';
+bool turn_off = false; //flag to begin shutdown
+char mode = 'M'; //either M for manual selection of angle or A for auto selection 
 float angles[360] = {0};
 
 
