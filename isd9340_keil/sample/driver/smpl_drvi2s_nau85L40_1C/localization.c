@@ -1,3 +1,6 @@
+/*file that builds a equalateral triangle array and then 
+using that array and a buffer of sound values waits for each microphone in array sound to reach a threshold
+and using when each microphone reaches a threshold can then figure out angle of oncoming sound*/
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
