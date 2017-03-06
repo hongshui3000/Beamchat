@@ -1,3 +1,5 @@
+/*file that calculates the number of samples to delay each microphone given
+the angle of oncoming sound */
 #include <stdio.h>
 #include <math.h>
 #include "delay.h"
